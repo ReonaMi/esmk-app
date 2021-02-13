@@ -1,0 +1,22 @@
+<svg width="85" height="25.000000000000004" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" fill-rule="evenodd" fill="none">
+   <g id="svg_2" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="#FF4600">
+    <path id="svg_3" d="m19,15l0,-8c-0.00073,-0.7138 -0.38183,-1.3731 -1,-1.73l-7,-4c-0.6188,-0.35727 -1.3812,-0.35727 -2,0l-7,4c-0.61817,0.3569 -0.99927,1.0162 -1,1.73l0,8c0.00073,0.7138 0.38183,1.3731 1,1.73l7,4c0.6188,0.35727 1.3812,0.35727 2,0l7,-4c0.61817,-0.3569 0.99927,-1.0162 1,-1.73z"/>
+    <polyline id="svg_4" points="5.5,3.2100000381469727 10,5.809999942779541 14.5,3.2100000381469727 "/>
+    <polyline id="svg_5" points="5.5,18.790000915527344 5.5,13.600000381469727 1,11 "/>
+    <polyline id="svg_6" points="19,11 14.5,13.600000381469727 14.5,18.790000915527344 "/>
+    <polyline id="svg_7" points="1.2699999809265137,5.960000038146973 10,11.010000228881836 18.729999542236328,5.960000038146973 "/>
+    <line id="svg_8" y2="11" y1="21.08" x2="10" x1="10"/>
+   </g>
+   <path id="svg_9" d="m36.45,14.95z" fill-rule="nonzero" fill="#000"/>
+  </g>
+  <text font-style="normal" font-weight="normal" xml:space="preserve" text-anchor="start" font-family="'Nunito SemiBold'" font-size="16" id="svg_10" y="18.64955" x="21.51789" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="null" fill="#000000">E-SMK</text>
+ </g>
+</svg>
