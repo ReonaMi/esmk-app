@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'guru' => [
+            'driver' => 'session',
+            'provider' => 'gurus',
+        ],
+
+        'guru-api' => [
+            'driver' => 'token',
+            'provider' => 'gurus',
+        ]
     ],
 
     /*
@@ -75,6 +85,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'gurus' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Guru::class,
+        ]
     ],
 
     /*

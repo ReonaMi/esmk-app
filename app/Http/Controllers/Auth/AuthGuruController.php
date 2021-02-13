@@ -9,7 +9,17 @@ class AuthGuruController extends Controller
 {
     public function login(Request $request){
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            echo "login Guru";
+            $email = $request->email;
+            $password = $request->password;
+            $auth = auth()->guard('guru')->attempt([
+                'email_guru' => $email,
+                'password' => $password
+            ]);
+            if (!$auth){
+                return back()->with('error', 'Gagal Login!');
+            }else{
+                return redirect()->route('get.dashboardGuru')->with('success', 'Berhasil Login!');
+            }
         }else{
             $title = 'Login Guru';
             $route = 'post.loginGuru';

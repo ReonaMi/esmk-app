@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController as Home;
 use App\Http\Controllers\Auth\AuthSiswaController as AuthSiswa;
 use App\Http\Controllers\Auth\AuthGuruController as AuthGuru;
 use App\Http\Controllers\Auth\AuthAdminController as AuthAdmin;
+use App\Http\Controllers\Guru\DashboardGuruController as DashboardGuru;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,8 @@ Route::middleware('guest')->group(function(){
     Route::post('/login-guru', [AuthGuru::class, 'login'])->name('post.loginGuru');
     Route::get('/login-admin', [AuthAdmin::class, 'login'])->name('get.loginAdmin');
     Route::post('/login-admin', [AuthAdmin::class, 'login'])->name('post.loginAdmin');
+});
+
+Route::middleware('auth:guru')->group(function(){
+    Route::get('/dashboard-guru', [DashboardGuru::class, 'index'])->name('get.dashboardGuru');
 });

@@ -66,3 +66,22 @@
         </div>
     </main>
 @endsection
+
+@push('myJS')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@endpush
+
+@if(\Session::has('error'))
+    @push('myJS')
+        <script type="text/javascript">
+            function alert() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ \Session::get('error') }}'
+                });
+            }
+            alert();
+        </script>
+    @endpush
+@endif
