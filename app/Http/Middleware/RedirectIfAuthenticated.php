@@ -19,11 +19,30 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = empty($guards) ? [null] : $guards;
+//        $guards = empty($guards) ? [null] : $guards;
+//
+//        foreach ($guards as $guard) {
+//            if (Auth::guard($guard)->check()) {
+//                return redirect(RouteServiceProvider::HOME);
+//            }
+//        }
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        if (Auth::guard('guru')->check()){
+            return redirect()->route('get.dashboardGuru');
+        }elseif (Auth::guard('siswa')->check()){
+            return redirect()->route('get.dashboardSiswa');
+        }elseif (Auth::guard('admin')->check()){
+            $role = Auth::guard('admin')->user()->wewenang;
+            if ($role == "superadmin"){
+                return redirect()->route('get.dashboardSuperadmin');
+            }elseif ($role == "kesiswaan"){
+
+            }elseif ($role == "kurikulum"){
+
+            }elseif ($role == "toolman"){
+
+            }else{
+
             }
         }
 

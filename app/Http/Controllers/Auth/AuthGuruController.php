@@ -16,8 +16,10 @@ class AuthGuruController extends Controller
                 'password' => $password
             ]);
             if (!$auth){
-                return back()->with('error', 'Gagal Login!');
+                return back()->with('error', 'Anda Bukan Guru!');
             }else{
+                auth()->guard('siswa')->logout();
+                auth()->guard('admin')->logout();
                 return redirect()->route('get.dashboardGuru')->with('success', 'Berhasil Login!');
             }
         }else{
@@ -30,5 +32,11 @@ class AuthGuruController extends Controller
                 'status' => $status
             ]);
         }
+    }
+
+    public function logout()
+    {
+        auth()->guard('guru')->logout();
+        return redirect()->route('get.loginGuru');
     }
 }

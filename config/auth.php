@@ -55,6 +55,26 @@ return [
         'guru-api' => [
             'driver' => 'token',
             'provider' => 'gurus',
+        ],
+
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswas',
+        ],
+
+        'siswa-api' => [
+            'driver' => 'token',
+            'provider' => 'siswas',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins'
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins'
         ]
     ],
 
@@ -89,7 +109,17 @@ return [
         'gurus' => [
             'driver' => 'eloquent',
             'model' => App\Models\Guru::class,
-        ]
+        ],
+
+        'siswas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Siswa::class
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class
+        ],
     ],
 
     /*

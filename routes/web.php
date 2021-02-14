@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\AuthSiswaController as AuthSiswa;
 use App\Http\Controllers\Auth\AuthGuruController as AuthGuru;
 use App\Http\Controllers\Auth\AuthAdminController as AuthAdmin;
 use App\Http\Controllers\Guru\DashboardGuruController as DashboardGuru;
+use App\Http\Controllers\Admin\Superadmin\DashboardSuperadminController as DashboardSuperadmin;
+use App\Http\Controllers\Siswa\DashboardSiswaController as DashboardSiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ use App\Http\Controllers\Guru\DashboardGuruController as DashboardGuru;
 */
 
 Route::middleware('guest')->group(function(){
-    Route::get('/', [Home::class, 'index']);
+    Route::get('/', [Home::class, 'index'])->name('home');
     Route::get('/login-siswa', [AuthSiswa::class, 'login'])->name('get.loginSiswa');
     Route::post('/login-siswa', [AuthSiswa::class, 'login'])->name('post.loginSiswa');
     Route::get('/login-guru', [AuthGuru::class, 'login'])->name('get.loginGuru');
@@ -29,6 +31,17 @@ Route::middleware('guest')->group(function(){
     Route::post('/login-admin', [AuthAdmin::class, 'login'])->name('post.loginAdmin');
 });
 
+Route::middleware('auth:siswa')->group(function (){
+    Route::get('/dashboard-siswa', [DashboardSiswa::class, 'index'])->name('get.dashboardSiswa');
+    Route::get('/logout-siswa', [AuthSiswa::class, 'logout'])->name('get.logoutSiswa');
+});
+
 Route::middleware('auth:guru')->group(function(){
     Route::get('/dashboard-guru', [DashboardGuru::class, 'index'])->name('get.dashboardGuru');
+    Route::get('/logout-guru', [AuthGuru::class, 'logout'])->name('get.logoutGuru');
+});
+
+Route::middleware('auth:admin')->group(function (){
+    Route::get('/superadmin/dashboard', [DashboardSuperadmin::class, 'index'])->name('get.dashboardSuperadmin');
+    Route::get('/superadmin/logout', [AuthAdmin::class, 'logout'])->name('get.logoutSuperadmin');
 });
