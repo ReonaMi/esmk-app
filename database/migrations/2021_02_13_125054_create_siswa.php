@@ -19,6 +19,8 @@ class CreateSiswa extends Migration
             $table->unsignedBigInteger('id_kelas_ref');
             $table->string('email_siswa')->unique();
             $table->string('password');
+            $table->text('alamat');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('id_kelas_ref')

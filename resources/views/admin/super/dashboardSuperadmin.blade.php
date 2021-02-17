@@ -19,7 +19,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('get.dashboardSuperadmin') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -34,38 +34,55 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSiswa"
                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
+                <i class="fas fa-fw fa-users"></i>
+                <span>Manajemen Siswa</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div id="collapseSiswa" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
+                    <h6 class="collapse-header">Kelas:</h6>
+                    <a class="collapse-item" href="{{ route('get.semuaKelasSuperadmin') }}">Semua Kelas</a>
+                    @foreach($tingkat as $item)
+                        <a class="collapse-item" href="{{ route('get.indexKelasSuperadmin', $item->tingkat) }}">Kelas {{ $item->tingkat }}</a>
+                    @endforeach
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuru"
                aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                <span>Manajemen Guru</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            <div id="collapseGuru" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <a class="collapse-item" href="#">Guru</a>
                 </div>
             </div>
         </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-users-cog"></i>
+                <span>Manajemen Admin</span>
+            </a>
+            <div id="collapseAdmin" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="#">Admin</a>
+                </div>
+            </div>
+        </li>
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -305,7 +322,7 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ \Auth::user()->nama_admin }}</span>
                         <img class="img-profile rounded-circle"
                              src="img/undraw_profile.svg">
                     </a>
@@ -359,10 +376,10 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Jumlah Kelas
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahKelas }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    <i class="fas fa-school fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -378,10 +395,10 @@
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Jumlah Siswa
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahSiswa }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -397,21 +414,10 @@
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         Jumlah Guru
                                     </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="progress progress-sm mr-2">
-                                                <div class="progress-bar bg-info" role="progressbar"
-                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                     aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahGuru }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -427,10 +433,10 @@
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                         Jumlah Admin
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlahAdmin }}</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    <i class="fas fa-users-cog fa-2x text-gray-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -698,6 +704,9 @@
 
 @push('dashboardJS')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('js/sb-admin-2/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2/main/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2/main/demo/chart-pie-demo.js') }}"></script>
 @endpush
 
 @if(\Session::has('success'))
