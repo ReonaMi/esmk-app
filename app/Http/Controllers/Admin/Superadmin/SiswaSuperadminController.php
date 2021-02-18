@@ -26,7 +26,8 @@ class SiswaSuperadminController extends Controller
                     $val = $row->tingkat." ".$row->kelas;
                     return $val;
                 })
-                ->rawColumns(['tingkat_kelas'])
+                ->addColumn('aksi', 'admin.super.datatables.btnSiswa')
+                ->rawColumns(['tingkat_kelas', 'aksi'])
                 ->make(true);
         }
 
@@ -54,7 +55,8 @@ class SiswaSuperadminController extends Controller
                     $val = $row->tingkat." ".$row->kelas;
                     return $val;
                 })
-                ->rawColumns(['tingkat_kelas'])
+                ->addColumn('aksi', 'admin.super.datatables.btnSiswa')
+                ->rawColumns(['tingkat_kelas', 'aksi'])
                 ->make(true);
         }
 

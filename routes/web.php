@@ -10,6 +10,7 @@ use App\Http\Controllers\Guru\DashboardGuruController as DashboardGuru;
 use App\Http\Controllers\Admin\Superadmin\DashboardSuperadminController as DashboardSuperadmin;
 use App\Http\Controllers\Siswa\DashboardSiswaController as DashboardSiswa;
 use App\Http\Controllers\Admin\Superadmin\SiswaSuperadminController as SiswaSuperadmin;
+use App\Http\Controllers\Admin\Superadmin\AdminSuperadminController as AdminSuperadmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,5 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/superadmin/logout', [AuthAdmin::class, 'logout'])->name('get.logoutSuperadmin');
     Route::get('/superadmin/kelas/semua', [SiswaSuperadmin::class, 'indexSemuaKelas'])->name('get.semuaKelasSuperadmin');
     Route::get('/superadmin/kelas/{id}', [SiswaSuperadmin::class, 'indexkelas'])->name('get.indexKelasSuperadmin');
+    Route::get('/superadmin/admin', [AdminSuperadmin::class, 'index'])->name('get.indexAdminSuperadmin');
 });

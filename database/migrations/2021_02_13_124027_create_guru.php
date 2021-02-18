@@ -18,6 +18,7 @@ class CreateGuru extends Migration
             $table->string('nama_guru');
             $table->string('email_guru')->unique();
             $table->string('password');
+            $table->string('no_ponsel');
             $table->timestamps();
         });
     }

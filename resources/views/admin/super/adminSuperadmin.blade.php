@@ -1,6 +1,6 @@
 @extends('shared.dashboard.dashboard')
 
-@section('title', 'Semua Kelas - Superadmin')
+@section('title', 'Admin - Superadmin')
 
 @section('css-dashboard')
     <link rel="stylesheet" href="{{ asset('js/sb-admin-2/datatables/dataTables.bootstrap4.css') }}">
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSiswa"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-users"></i>
@@ -71,7 +71,7 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin"
                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-users-cog"></i>
@@ -322,14 +322,13 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Kelas</th>
-                                    <th>Status</th>
-                                    <th>Alamat</th>
-                                    <th>Aksi</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Admin</th>
+                                <th>Emain</th>
+                                <th>Wewenang</th>
+                                <th>Aksi</th>
+                            </tr>
                             </thead>
                         </table>
                     </div>
@@ -341,26 +340,6 @@
 
     </div>
     <!-- End of Main Content -->
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('get.logoutSuperadmin') }}">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('dashboardJS')
@@ -370,19 +349,14 @@
         let table = $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            @if($title == "Semua Kelas")
-                ajax: "{{ route('get.semuaKelasSuperadmin') }}",
-            @else
-                ajax: "{{ route('get.indexKelasSuperadmin', $paramURL) }}",
-            @endif
+            ajax: "{{ route('get.indexAdminSuperadmin') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'nama_siswa', name: 'nama_siswa'},
-                {data: 'tingkat_kelas', name: 'tingkat_kelas'},
-                {data: 'status', name: 'status'},
-                {data: 'alamat', name: 'alamat'},
-                {data: 'aksi', name: 'aksi'},
+                {data: 'nama_admin', name: 'nama_admin'},
+                {data: 'email_admin', name: 'email_admin'},
+                {data: 'wewenang', name: 'wewenang'},
+                {data: 'aksi', name: 'aksi'}
             ]
-        });
+        })
     </script>
 @endpush
