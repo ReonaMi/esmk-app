@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Superadmin\DashboardSuperadminController as Dashb
 use App\Http\Controllers\Siswa\DashboardSiswaController as DashboardSiswa;
 use App\Http\Controllers\Admin\Superadmin\SiswaSuperadminController as SiswaSuperadmin;
 use App\Http\Controllers\Admin\Superadmin\AdminSuperadminController as AdminSuperadmin;
+use App\Http\Controllers\Admin\Superadmin\GuruSuperadminController as GuruSuperadmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,29 +25,43 @@ use App\Http\Controllers\Admin\Superadmin\AdminSuperadminController as AdminSupe
 */
 
 Route::middleware('guest')->group(function(){
+    // routing home
     Route::get('/', [Home::class, 'index'])->name('home');
+    // routing login siswa
     Route::get('/login-siswa', [AuthSiswa::class, 'login'])->name('get.loginSiswa');
     Route::post('/login-siswa', [AuthSiswa::class, 'login'])->name('post.loginSiswa');
+    // routing login guru
     Route::get('/login-guru', [AuthGuru::class, 'login'])->name('get.loginGuru');
     Route::post('/login-guru', [AuthGuru::class, 'login'])->name('post.loginGuru');
+    // routing login admin
     Route::get('/login-admin', [AuthAdmin::class, 'login'])->name('get.loginAdmin');
     Route::post('/login-admin', [AuthAdmin::class, 'login'])->name('post.loginAdmin');
 });
 
 Route::middleware('auth:siswa')->group(function (){
+    // routing dashboard siswa
     Route::get('/dashboard-siswa', [DashboardSiswa::class, 'index'])->name('get.dashboardSiswa');
+    // routing logout siswa
     Route::get('/logout-siswa', [AuthSiswa::class, 'logout'])->name('get.logoutSiswa');
 });
 
 Route::middleware('auth:guru')->group(function(){
+    // routing dashboard guru
     Route::get('/dashboard-guru', [DashboardGuru::class, 'index'])->name('get.dashboardGuru');
+    // routing logout guru
     Route::get('/logout-guru', [AuthGuru::class, 'logout'])->name('get.logoutGuru');
 });
 
 Route::middleware('auth:admin')->group(function (){
+    // routing dashboard superadmin
     Route::get('/superadmin/dashboard', [DashboardSuperadmin::class, 'index'])->name('get.dashboardSuperadmin');
+    // routing logout superadmin
     Route::get('/superadmin/logout', [AuthAdmin::class, 'logout'])->name('get.logoutSuperadmin');
+    // routing kelas - superadmin
     Route::get('/superadmin/kelas/semua', [SiswaSuperadmin::class, 'indexSemuaKelas'])->name('get.semuaKelasSuperadmin');
     Route::get('/superadmin/kelas/{id}', [SiswaSuperadmin::class, 'indexkelas'])->name('get.indexKelasSuperadmin');
+    // routing guru - superadmin
+    Route::get('/superadmin/guru', [GuruSuperadmin::class, 'indexGuru'])->name('get.indexGuruSuperadmin');
+    // routing manajemen admin - superadmin
     Route::get('/superadmin/admin', [AdminSuperadmin::class, 'index'])->name('get.indexAdminSuperadmin');
 });

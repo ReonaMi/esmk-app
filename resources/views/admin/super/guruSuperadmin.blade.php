@@ -1,6 +1,6 @@
 @extends('shared.dashboard.dashboard')
 
-@section('title', 'Semua Kelas - Superadmin')
+@section('title', $title.' - Superadmin')
 
 @section('css-dashboard')
     <link rel="stylesheet" href="{{ asset('js/sb-admin-2/datatables/dataTables.bootstrap4.css') }}">
@@ -37,7 +37,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSiswa"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-users"></i>
@@ -55,7 +55,7 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuru"
                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
@@ -322,14 +322,13 @@
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Kelas</th>
-                                    <th>Status</th>
-                                    <th>Alamat</th>
-                                    <th>Aksi</th>
-                                </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Guru</th>
+                                <th>Email</th>
+                                <th>No. Ponsel</th>
+                                <th>Aksi</th>
+                            </tr>
                             </thead>
                         </table>
                     </div>
@@ -370,19 +369,16 @@
         let table = $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            @if($title == "Semua Kelas")
-                ajax: "{{ route('get.semuaKelasSuperadmin') }}",
-            @else
-                ajax: "{{ route('get.indexKelasSuperadmin', $paramURL) }}",
-            @endif
+            ajax: "{{ route('get.indexGuruSuperadmin') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'nama_siswa', name: 'nama_siswa'},
-                {data: 'tingkat_kelas', name: 'tingkat_kelas'},
-                {data: 'status', name: 'status'},
-                {data: 'alamat', name: 'alamat'},
-                {data: 'aksi', name: 'aksi'},
+                {data: 'nama_guru', name: 'nama_guru'},
+                {data: 'email_guru', name: 'email_guru'},
+                {data: 'no_ponsel', name: 'no_ponsel'},
+                {data: 'aksi', name: 'aksi'}
             ]
         });
     </script>
 @endpush
+
+

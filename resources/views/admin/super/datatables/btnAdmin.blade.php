@@ -1,1 +1,1 @@
-<a href="#" class="btn btn-info">Detail</a>
+<a href="" class="btn btn-info">Detail</a>

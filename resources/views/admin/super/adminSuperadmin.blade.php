@@ -64,8 +64,8 @@
             <div id="collapseGuru" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="#">Guru</a>
+                    <h6 class="collapse-header">Manajemen Guru:</h6>
+                    <a class="collapse-item" href="{{ route('get.indexGuruSuperadmin') }}">Guru</a>
                 </div>
             </div>
         </li>
