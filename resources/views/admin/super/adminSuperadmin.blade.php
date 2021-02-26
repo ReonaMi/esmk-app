@@ -325,7 +325,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama Admin</th>
-                                <th>Emain</th>
+                                <th>Email</th>
                                 <th>Wewenang</th>
                                 <th>Aksi</th>
                             </tr>
@@ -352,8 +352,8 @@
             ajax: "{{ route('get.indexAdminSuperadmin') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'nama_admin', name: 'nama_admin'},
-                {data: 'email_admin', name: 'email_admin'},
+                {data: 'nama_lengkap', name: 'nama_lengkap'},
+                {data: 'email', name: 'email'},
                 {data: 'wewenang', name: 'wewenang'},
                 {data: 'aksi', name: 'aksi'}
             ]

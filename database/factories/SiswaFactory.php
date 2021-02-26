@@ -22,12 +22,18 @@ class SiswaFactory extends Factory
     public function definition()
     {
         return [
-            'nama_siswa' => $this->faker->name,
+            'nama_lengkap' => $this->faker->name,
             'id_kelas_ref' => $this->faker->numberBetween(1,55),
-            'email_siswa' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'),
             'alamat' => $this->faker->address,
-            'status' => 'aktif'
+            'kode_pos' => 62115,
+            'latitude' => $this->faker->latitude,
+            'logitude' => $this->faker->longitude,
+            'tahun_masuk' => '2019',
+            'status' => 'aktif',
+            'no_ponsel' => $this->faker->e164PhoneNumber,
+            'nama_ibu' => $this->faker->name,
         ];
     }
 }

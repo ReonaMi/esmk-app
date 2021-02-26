@@ -13,7 +13,7 @@ class AuthSiswaController extends Controller
             $email = $request->email;
             $password = $request->password;
             $auth = auth()->guard('siswa')->attempt([
-                'email_siswa' => $email,
+                'email' => $email,
                 'password' => $password
             ]);
 

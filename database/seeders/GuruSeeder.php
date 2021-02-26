@@ -16,28 +16,40 @@ class GuruSeeder extends Seeder
     {
         DB::table('guru')->insert([
             [
-                'nama_guru' => 'Alawy Djufri',
-                'email_guru' => 'alawy@gmail.com',
+                'nama_lengkap' => 'Alawy Djufri',
+                'email' => 'alawy@gmail.com',
                 'password' => bcrypt('password'),
-                'no_ponsel' => '0823232444'
+                'no_ponsel' => '0823232444',
+                'NIK' => 3566776554454321,
+                'alamat' => 'xxxx',
+                'kode_pos' => 62155
             ],
             [
                 'nama_guru' => 'rusmani',
-                'email_guru' => 'rusmani@gail.com',
+                'email' => 'rusmani@gail.com',
                 'password' => bcrypt('password'),
-                'no_ponsel' => '08989343434'
+                'no_ponsel' => '08989343434',
+                'NIK' => 3566776554454322,
+                'alamat' => 'xxxx',
+                'kode_pos' => 62155
             ],
             [
                 'nama_guru' => 'Umi Kulsum',
-                'email_guru' => 'umikulsum@gmail.com',
+                'email' => 'umikulsum@gmail.com',
                 'password' => bcrypt('password'),
-                'no_ponsel' => '909084343555'
+                'no_ponsel' => '909084343555',
+                'NIK' => 3566776554454323,
+                'alamat' => 'xxxx',
+                'kode_pos' => 62155
             ],
             [
                 'nama_guru' => 'Dwi Cahyo',
-                'email_guru' => 'dwicahyo@gmail.com',
+                'email' => 'dwicahyo@gmail.com',
                 'password' => bcrypt('password'),
-                'no_ponsel' => '089393993994'
+                'no_ponsel' => '089393993994',
+                'NIK' => 3566776554454324,
+                'alamat' => 'xxxx',
+                'kode_pos' => 62155
             ]
         ]);
     }

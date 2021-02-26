@@ -16,7 +16,7 @@ class SiswaSuperadminController extends Controller
         $query = Kelas::join('siswa', 'siswa.id_kelas_ref', 'kelas.id_kelas')
                     ->orderBy('tingkat', 'asc')
                     ->orderBy('kelas', 'asc')
-                    ->orderBy('nama_siswa', 'asc')
+                    ->orderBy('nama_lengkap', 'asc')
                     ->get();
 
         if (request()->ajax()){
@@ -45,7 +45,7 @@ class SiswaSuperadminController extends Controller
         $whereQuery = Kelas::where('tingkat', $id)
             ->join('siswa', 'siswa.id_kelas_ref', 'kelas.id_kelas')
             ->orderBy('kelas', 'asc')
-            ->orderBy('nama_siswa', 'asc')
+            ->orderBy('nama_lengkap', 'asc')
             ->get();
 
         if (request()->ajax()){

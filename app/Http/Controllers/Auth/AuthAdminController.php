@@ -14,7 +14,7 @@ class AuthAdminController extends Controller
             $email = $request->email;
             $password = $request->password;
             $auth = auth()->guard('admin')->attempt([
-                'email_admin' => $email,
+                'email' => $email,
                 'password' => $password
             ]);
             if (!$auth){

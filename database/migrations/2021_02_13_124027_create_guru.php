@@ -15,10 +15,14 @@ class CreateGuru extends Migration
     {
         Schema::create('guru', function (Blueprint $table) {
             $table->bigIncrements('id_guru');
-            $table->string('nama_guru');
-            $table->string('email_guru')->unique();
+            $table->string('nama_lengkap');
+            $table->string('gelar')->nullable();
+            $table->string('email')->unique();
             $table->string('password');
             $table->string('no_ponsel');
+            $table->string('NIK');
+            $table->text('alamat');
+            $table->integer('kode_pos');
             $table->timestamps();
         });
     }

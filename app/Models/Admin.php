@@ -16,11 +16,11 @@ class Admin extends Authenticatable
     protected $primaryKey = 'id_admin';
 
     protected $fillable = [
-        'nama_admin',
-        'email_admin',
+        'nama_lengkap',
+        'email',
         'password',
         'wewenang',
-        'deskripsi_admin',
+        'deskripsi',
         'id_jurusan_ref'
     ];
 }

@@ -16,35 +16,35 @@ class AdminSeeder extends Seeder
     {
         DB::table('admin')->insert([
             [
-                'nama_admin' => 'Sigit Boworaharjo',
-                'email_admin' => 'kangteknisi@gmail.com',
+                'nama_lengkap' => 'Sigit Boworaharjo',
+                'email' => 'kangteknisi@gmail.com',
                 'password' => bcrypt('superadmin'),
                 'wewenang' => 'superadmin',
-                'deskripsi_admin' => null,
+                'deskripsi' => null,
                 'id_jurusan_ref' => null
             ],
             [
-                'nama_admin' => 'Sundoyo',
-                'email_admin' => 'sundoyo@gmail.com',
+                'nama_lengkap' => 'Sundoyo',
+                'email' => 'sundoyo@gmail.com',
                 'password' => bcrypt('password'),
                 'wewenang' => 'kesiswaaan',
-                'deskripsi_admin' => null,
+                'deskripsi' => null,
                 'id_jurusan_ref' => null
             ],
             [
-                'nama_admin' => 'Risky Pay',
-                'email_admin' => 'riskyyunianto@gmail.com',
+                'nama_lengkap' => 'Risky Pay',
+                'email' => 'riskyyunianto@gmail.com',
                 'password' => bcrypt('password'),
                 'wewenang' =>'kurikulum',
-                'deskripsi_admin' => null,
+                'deskripsi' => null,
                 'id_jurusan_ref' => null
             ],
             [
-                'nama_admin' => 'Elsa',
-                'email_admin' => 'elsa@gmail.com',
+                'nama_lengkap' => 'Elsa',
+                'email' => 'elsa@gmail.com',
                 'password' => bcrypt('password'),
                 'wewenang' => 'toolman',
-                'deskripsi_admin' => null,
+                'deskripsi' => null,
                 'id_jurusan_ref' => 1
             ]
         ]);

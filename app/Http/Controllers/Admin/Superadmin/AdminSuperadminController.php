@@ -16,7 +16,7 @@ class AdminSuperadminController extends Controller
 
         $query = Admin::where('wewenang', '!=', 'superadmin')
                     ->orderBy('wewenang', 'asc')
-                    ->orderBy('nama_admin', 'asc')
+                    ->orderBy('nama_lengkap', 'asc')
                     ->get();
 
         if (request()->ajax()){

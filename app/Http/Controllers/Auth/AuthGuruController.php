@@ -12,7 +12,7 @@ class AuthGuruController extends Controller
             $email = $request->email;
             $password = $request->password;
             $auth = auth()->guard('guru')->attempt([
-                'email_guru' => $email,
+                'email' => $email,
                 'password' => $password
             ]);
             if (!$auth){

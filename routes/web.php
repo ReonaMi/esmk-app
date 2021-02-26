@@ -62,6 +62,7 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/superadmin/kelas/{id}', [SiswaSuperadmin::class, 'indexkelas'])->name('get.indexKelasSuperadmin');
     // routing guru - superadmin
     Route::get('/superadmin/guru', [GuruSuperadmin::class, 'indexGuru'])->name('get.indexGuruSuperadmin');
+    Route::get('/superadmin/guru/{id}', [GuruSuperadmin::class, 'detailGuru'])->name('get.detailGuruSuperadmin');
     // routing manajemen admin - superadmin
     Route::get('/superadmin/admin', [AdminSuperadmin::class, 'index'])->name('get.indexAdminSuperadmin');
 });
