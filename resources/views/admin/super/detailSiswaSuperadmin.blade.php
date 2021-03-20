@@ -1,6 +1,10 @@
 @extends('shared.dashboard.dashboard')
 
-@section('title', 'Detail Guru - '.$data["nama_guru"])
+@section('title', 'Detail - '.$data["nama_lengkap"])
+
+@section('css-dashboard')
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+@endsection
 
 @section('sidebar-dashboard')
     <!-- Sidebar -->
@@ -33,7 +37,7 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSiswa"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-users"></i>
@@ -51,7 +55,7 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuru"
                aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
@@ -97,7 +101,6 @@
 @section('content-dashboard')
     <!-- Main Content -->
     <div id="content">
-
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -307,14 +310,14 @@
 
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Detail Guru - {{ $data["nama_guru"] }}</h1>
+                <h1 class="h3 mb-0 text-gray-500">Detail Siswa - {{ $data["nama_lengkap"] }}</h1>
             </div>
 
             <div class="row">
                 <div class="col-xl-4">
                     <div class="card mb-4">
                         <div class="card-header text-primary font-weight-bold">
-                            Foto Guru
+                            Foto Siswa
                         </div>
                         <div class="card-body text-center">
                             <!-- Profile Picture Image -->
@@ -322,8 +325,7 @@
                                 <img src="{{ asset('images/sb-admin-2/undraw_profile_4.svg') }}" alt=""
                                      class="img-fluid rounded-circle mb-2" width="250" height="250">
                             @else
-                                <img src="{{ asset('images/guru/profil/'.$data["foto_profil"]) }}" alt=""
-                                     class="img-fluid rounded-circle mb-2" width="250" height="250">
+
                             @endif
                             <div class="small font-italic text-muted mb-4">Ukuran Maksimal 5MB dan berformat PNG/JPG</div>
                             <button class="btn btn-primary" type="button">Ubah Foto</button>
@@ -331,72 +333,68 @@
                     </div>
                 </div>
                 <div class="col-xl-8">
-                    <!-- Card Detail Guru-->
                     <div class="card mb-4">
-                        <div class="card-header text-primary font-weight-bold">Detail Guru</div>
+                        <div class="card-header text-primary font-weight-bold">Detail Siswa</div>
                         <div class="card-body">
-                            <form>
-                                <!-- Form Row-->
+                            <form action="">
                                 <div class="form-row">
-                                    <!-- Form Group (first name)-->
                                     <div class="form-group col-md-6">
-                                        <label class="small mb-1" for="namaLengkap">Nama Lengkap</label>
-                                        <input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan Nama Lengkap" value="{{ $data["nama_guru"] }}">
+                                        <label class="small mb-1" for="namalengkap">Nama Lengkap</label>
+                                        <input class="form-control" id="namaLengkap" type="text" placeholder="Masukkan Nama Lengkap" value="{{ $data["nama_lengkap"] }}">
                                     </div>
-                                    <!-- Form Group (last name)-->
-                                    <div class="form-group col-md-6">
-                                        <label class="small mb-1" for="Gelar">Gelar</label>
-                                        <input class="form-control" id="Gelar" type="text" placeholder="Masukkan Gelar" value="{{ $data["gelar"] }}">
-                                    </div>
-                                </div>
-                                <!-- Form Row        -->
-                                <div class="form-row">
-                                    <!-- Form Group (organization name)-->
                                     <div class="form-group col-md-6">
                                         <label class="small mb-1" for="NIK">NIK</label>
-                                        <input class="form-control" id="NIK" type="number" placeholder="Masukkan NIK" value="{{ $data["NIK"] }}">
-                                    </div>
-                                    <!-- Form Group (location)-->
-                                    <div class="form-group col-md-6">
-                                        <label class="small mb-1" for="nomorPonsel">Nomor Ponsel</label>
-                                        <input class="form-control" id="nomorPonsel" type="tel" placeholder="Masukkan Nomor Ponsel" value="{{ $data["no_ponsel"] }}">
+                                        <input class="form-control" id="NIK" type="text" placeholder="Masukkan NIK" value="{{ $data["NIK"] }}">
                                     </div>
                                 </div>
-                                <!-- Form Group (email address)-->
-                                <div class="form-group">
-                                    <label class="small mb-1" for="email">Email</label>
-                                    <input class="form-control" id="email" type="email" placeholder="Masukkan Email" value="{{ $data["email"] }}">
-                                </div>
-                                <!-- Form Row-->
                                 <div class="form-row">
-                                    <!-- Form Group (phone number)-->
                                     <div class="form-group col-md-6">
-                                        <label class="small mb-1" for="alamat">Alamat</label>
-                                        <textarea class="form-control" id="alamat">{{ $data["alamat"] }}</textarea>
+                                        <label class="small mb-1" for="tingkat">Kelas</label>
+                                        <select class="form-control" name="kelas" id="kelas">
+
+                                        </select>
                                     </div>
-                                    <!-- Form Group (birthday)-->
                                     <div class="form-group col-md-6">
-                                        <label class="small mb-1" for="kodePos">Kode Pos</label>
-                                        <input class="form-control" id="kodePos" type="text" name="kodePos" placeholder="Masukkan Kode Pos" value="{{ $data["kode_pos"] }}">
+                                        <label class="small mb-1" for="status">Status</label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="aktif">Aktif</option>
+                                            <option value="lulus">Lulus</option>
+                                            <option value="keluar">Keluar</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <!-- Save changes button-->
-                                <button class="btn btn-primary" type="button">Simpan Perubahan</button>
-                                <button class="btn btn-danger" type="button">Ubah Password</button>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="small mb-1 font-italic" for="Latitude">Latitude</label>
+                                        <input class="form-control" id="Latitude" type="number" placeholder="Masukkan Latitude" value="{{ $data["latitude"] }}">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="small mb-1 font-italic" for="Longitude">Longitude</label>
+                                        <input class="form-control" id="Longitude" type="number" placeholder="Masukkan Longitude" value="{{ $data["longitude"] }}">
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <div class="mb-sm-4"></div>
+                                        <button type="button" class="btn btn-success">
+                                            <i class="fas fa-map-marked"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div id="map" style='width: 100%; height: 500px;'></div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="small mb-1" for="email">E-Mail</label>
+                                        <input class="form-control" id="email" type="email" placeholder="Masukkan Email!" value="{{ $data["email"] }}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="small mb-1" for="noPonsel"></label>
+                                        <input class="form-control" id="noPonsel" type="text" placeholder="Masukkan Nomor Ponsel!" value="{{ $data["no_ponsel"] }}">
+                                    </div>
+                                </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8">
-                    <!-- Account details card-->
-                    <div class="card mb-4">
-                        <div class="card-header text-primary font-weight-bold">Mapel</div>
-                        <div class="card-body">
-                            <ul>
-                                @foreach($mapel as $item)
-                                    <li>{{ $item->nama_pelajaran }}</li>
-                                @endforeach
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -404,3 +402,22 @@
         </div>
     </div>
 @endsection
+
+@push('dashboardJS')
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <script type="text/javascript">
+        let latitude = parseFloat("{{ $data['latitude'] }}");
+        let longitude = parseFloat("{{ $data['longitude'] }}");
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia2FuZ3NkaGkiLCJhIjoiY2tseG9rNTVwMG9ibjJua3Z4am83c2QyYyJ9.lG1ljlMlKl6xMzBkWrWkhw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [longitude, latitude],
+            zoom: 8
+        });
+
+        var marker = new mapboxgl.Marker()
+            .setLngLat([longitude, latitude])
+            .addTo(map);
+    </script>
+@endpush

@@ -22,6 +22,7 @@ class CreateAdmin extends Migration
             $table->string('wewenang');
             $table->text('deskripsi')->nullable();
             $table->unsignedBigInteger('id_jurusan_ref')->nullable();
+            $table->string('foto_profil')->nullable();
             $table->timestamps();
 
             $table->foreign('id_jurusan_ref')

@@ -16,13 +16,14 @@ class CreateSiswa extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->bigIncrements('id_siswa');
             $table->string('nama_lengkap');
+            $table->string('NIK')->nullable();
             $table->unsignedBigInteger('id_kelas_ref');
             $table->string('email')->unique();
             $table->string('password');
             $table->text('alamat');
             $table->integer('kode_pos');
             $table->double('latitude')->nullable();
-            $table->double('logitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->integer('tahun_masuk');
             $table->integer('tahun_lulus')->nullable();
             $table->string('status');
@@ -32,7 +33,7 @@ class CreateSiswa extends Migration
             $table->string('no_ponsel_orang_tua')->nullable();
             $table->string('nama_wali')->nullable();
             $table->string('no_ponsel_wali')->nullable();
-            $table->string('no_ponsel_orang_wali')->nullable();
+            $table->string('foto_profil')->nullable();
             $table->timestamps();
 
             $table->foreign('id_kelas_ref')

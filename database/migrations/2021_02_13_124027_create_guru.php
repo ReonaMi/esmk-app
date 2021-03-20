@@ -23,6 +23,7 @@ class CreateGuru extends Migration
             $table->string('NIK');
             $table->text('alamat');
             $table->integer('kode_pos');
+            $table->string('foto_profil')->nullable();
             $table->timestamps();
         });
     }

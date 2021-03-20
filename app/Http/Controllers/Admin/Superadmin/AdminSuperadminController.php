@@ -10,9 +10,14 @@ use DataTables;
 
 class AdminSuperadminController extends Controller
 {
+    public $tingkat;
+
+    public function __construct(){
+        $this->tingkat = Kelas::getTingkat();
+    }
+
     public function index(){
         $title = "Manajemen Admin";
-        $queryTingkat = Kelas::getTingkat();
 
         $query = Admin::where('wewenang', '!=', 'superadmin')
                     ->orderBy('wewenang', 'asc')
@@ -29,7 +34,7 @@ class AdminSuperadminController extends Controller
 
         return view('admin.super.adminSuperadmin',[
             'title' => $title,
-            'tingkat' => $queryTingkat
+            'tingkat' => $this->tingkat
         ]);
     }
 }

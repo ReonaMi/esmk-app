@@ -22,7 +22,8 @@ class GuruSeeder extends Seeder
                 'no_ponsel' => '0823232444',
                 'NIK' => 3566776554454321,
                 'alamat' => 'xxxx',
-                'kode_pos' => 62155
+                'kode_pos' => 62155,
+                'foto_profil' => "face.svg"
             ],
             [
                 'nama_guru' => 'rusmani',
@@ -31,7 +32,8 @@ class GuruSeeder extends Seeder
                 'no_ponsel' => '08989343434',
                 'NIK' => 3566776554454322,
                 'alamat' => 'xxxx',
-                'kode_pos' => 62155
+                'kode_pos' => 62155,
+                'foto_profil' => null
             ],
             [
                 'nama_guru' => 'Umi Kulsum',
@@ -40,7 +42,8 @@ class GuruSeeder extends Seeder
                 'no_ponsel' => '909084343555',
                 'NIK' => 3566776554454323,
                 'alamat' => 'xxxx',
-                'kode_pos' => 62155
+                'kode_pos' => 62155,
+                'foto_profil' => null
             ],
             [
                 'nama_guru' => 'Dwi Cahyo',
@@ -49,7 +52,8 @@ class GuruSeeder extends Seeder
                 'no_ponsel' => '089393993994',
                 'NIK' => 3566776554454324,
                 'alamat' => 'xxxx',
-                'kode_pos' => 62155
+                'kode_pos' => 62155,
+                'foto_profil' => null
             ]
         ]);
     }

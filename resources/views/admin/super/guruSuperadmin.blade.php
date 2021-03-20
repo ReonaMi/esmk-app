@@ -310,8 +310,14 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">{{ $title }} - Superadmin &#x1F602;	</h1>
+            <div class="d-sm-flex align-items-center justify-content-between mb-3">
+                <h1 class="h3 mb-0 text-gray-800">{{ $title }} - Superadmin &#x1F602;</h1>
+            </div>
+
+            <div class="mb-3">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Tambah Guru
+                </a>
             </div>
 
             <div class="card shadow mb-4">
@@ -371,11 +377,11 @@
             serverSide: true,
             ajax: "{{ route('get.indexGuruSuperadmin') }}",
             columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'w-auto text-center'},
                 {data: 'nama_lengkap', name: 'nama_lengkap'},
                 {data: 'email', name: 'email'},
                 {data: 'no_ponsel', name: 'no_ponsel'},
-                {data: 'aksi', name: 'aksi'}
+                {data: 'aksi', name: 'aksi', className: 'text-center'}
             ]
         });
     </script>

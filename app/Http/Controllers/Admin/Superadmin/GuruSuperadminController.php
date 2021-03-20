@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Superadmin;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Crypt;
@@ -38,20 +39,28 @@ class GuruSuperadminController extends Controller
 
     public function detailGuru($id){
         $decryptId = Crypt::decrypt($id);
-        $tingkat = Kelas::getTingkat();
         $query = Guru::where('id_guru', $decryptId)
             ->get();
 
+        $queryGetMapel = MataPelajaran::where('id_guru_ref', $decryptId)->get();
+
+//        dd($query);
         $data = [];
         foreach ($query as $item){
             $data["nama_guru"] = $item->nama_lengkap;
-            $data["email_guru"] = $item->email;
+            $data["gelar"] = $item->gelar;
+            $data["email"] = $item->email;
             $data["no_ponsel"] = $item->no_ponsel;
+            $data["NIK"] = $item->NIK;
+            $data["alamat"] = $item->alamat;
+            $data["kode_pos"] = $item->kode_pos;
+            $data["foto_profil"] = $item->foto_profil;
         }
 
         return view('admin.super.detailGuruSuperadmin', [
-            "tingkat" => $tingkat,
-            "data" => $data
+            "tingkat" => $this->tingkat,
+            "data" => $data,
+            "mapel" => $queryGetMapel
         ]);
     }
 }

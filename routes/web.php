@@ -57,9 +57,10 @@ Route::middleware('auth:admin')->group(function (){
     Route::get('/superadmin/dashboard', [DashboardSuperadmin::class, 'index'])->name('get.dashboardSuperadmin');
     // routing logout superadmin
     Route::get('/superadmin/logout', [AuthAdmin::class, 'logout'])->name('get.logoutSuperadmin');
-    // routing kelas - superadmin
+    // routing kelas/siswa - superadmin
     Route::get('/superadmin/kelas/semua', [SiswaSuperadmin::class, 'indexSemuaKelas'])->name('get.semuaKelasSuperadmin');
     Route::get('/superadmin/kelas/{id}', [SiswaSuperadmin::class, 'indexkelas'])->name('get.indexKelasSuperadmin');
+    Route::get('/superadmin/siswa/{id}', [SiswaSuperadmin::class, 'detailSiswa'])->name('get.detailSiswa');
     // routing guru - superadmin
     Route::get('/superadmin/guru', [GuruSuperadmin::class, 'indexGuru'])->name('get.indexGuruSuperadmin');
     Route::get('/superadmin/guru/{id}', [GuruSuperadmin::class, 'detailGuru'])->name('get.detailGuruSuperadmin');

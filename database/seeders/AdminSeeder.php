@@ -21,7 +21,8 @@ class AdminSeeder extends Seeder
                 'password' => bcrypt('superadmin'),
                 'wewenang' => 'superadmin',
                 'deskripsi' => null,
-                'id_jurusan_ref' => null
+                'id_jurusan_ref' => null,
+                'foto_profil' => null
             ],
             [
                 'nama_lengkap' => 'Sundoyo',
@@ -29,7 +30,8 @@ class AdminSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'wewenang' => 'kesiswaaan',
                 'deskripsi' => null,
-                'id_jurusan_ref' => null
+                'id_jurusan_ref' => null,
+                'foto_profil' => null
             ],
             [
                 'nama_lengkap' => 'Risky Pay',
@@ -37,7 +39,8 @@ class AdminSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'wewenang' =>'kurikulum',
                 'deskripsi' => null,
-                'id_jurusan_ref' => null
+                'id_jurusan_ref' => null,
+                'foto_profil' => null
             ],
             [
                 'nama_lengkap' => 'Elsa',
@@ -45,7 +48,8 @@ class AdminSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'wewenang' => 'toolman',
                 'deskripsi' => null,
-                'id_jurusan_ref' => 1
+                'id_jurusan_ref' => 1,
+                'foto_profil' => null
             ]
         ]);
     }

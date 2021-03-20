@@ -29,7 +29,7 @@ class SiswaFactory extends Factory
             'alamat' => $this->faker->address,
             'kode_pos' => 62115,
             'latitude' => $this->faker->latitude,
-            'logitude' => $this->faker->longitude,
+            'longitude' => $this->faker->longitude,
             'tahun_masuk' => '2019',
             'status' => 'aktif',
             'no_ponsel' => $this->faker->e164PhoneNumber,
